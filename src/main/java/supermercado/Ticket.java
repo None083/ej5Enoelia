@@ -15,16 +15,16 @@ import java.util.ArrayList;
 public class Ticket {
 
     private LocalDateTime fecha;
-    private ArrayList<Producto> compra;
+    private Cinta compra;
     private double totalAPagar;
 
-    public Ticket(ArrayList<Producto> compra) {
-        this.compra = compra;
+    public Ticket(Cinta cinta) {
+        this.compra = cinta;
         this.fecha = LocalDateTime.now();
-        for (Producto p : compra) {
+        for (Producto p : cinta.getCompra()) {
             double precioSinIva = p.precio() * p.cantidad();
-            double impuestoDelProducto = precioSinIva * p.iva().getIva() / 100;
-            this.totalAPagar = precioSinIva + impuestoDelProducto;
+            double impuestoDelProducto = (precioSinIva * p.iva().getIva()) / 100;
+            this.totalAPagar += precioSinIva + impuestoDelProducto;
         }
     }
 
@@ -33,9 +33,10 @@ public class Ticket {
         String ticket = """
                         ------------------------------------------------------------------
                                          Supermercados Copito
+                        
                         Fecha: %s       Hora: %s
                         ------------------------------------------------------------------
-                        Producto    Precio  Cantidad    IVA     Precio sin IVA
+                        Producto     Precio Cantidad IVA Precio sin IVA
                         ------------------------------------------------------------------
                         """.formatted(this.fecha.format(
                 DateTimeFormatter.ofPattern("d/M/uuuu")),
@@ -43,7 +44,7 @@ public class Ticket {
 
         for (Producto p : compra) {
             ticket += """
-                      %s    %.2f    %d      %d%%     %.2f
+                      %s     %.2f     %d     %d%%     %.2f
                       """.formatted(p.nombre(), p.precio(), p.cantidad(),
                     p.iva().getIva(), (p.precio() * p.cantidad()));
         }
@@ -77,7 +78,7 @@ public class Ticket {
         }
 
         ticket += """
-                  Nº prod. iva 4%%: %d   Precio sin IVA: %.2f  Precio con IVA: %.2f
+                  Nº prod. iva 4%%:  %d   Precio sin IVA: %.2f  Precio con IVA: %.2f
                   Nº prod. iva 10%%: %d   Precio sin IVA: %.2f  Precio con IVA: %.2f
                   Nº prod. iva 21%%: %d   Precio sin IVA: %.2f  Precio con IVA: %.2f
                   ------------------------------------------------------------------
