@@ -42,7 +42,7 @@ public class Ticket {
                 DateTimeFormatter.ofPattern("d/M/uuuu")),
                 this.fecha.format(DateTimeFormatter.ofPattern("H:m")));
 
-        for (Producto p : compra) {
+        for (Producto p : this.compra.getCompra()) {
             ticket += """
                       %s     %.2f     %d     %d%%     %.2f
                       """.formatted(p.nombre(), p.precio(), p.cantidad(),
@@ -59,7 +59,7 @@ public class Ticket {
         int productosC = 0;
         double precioSinIvaC = 0;
         double precioConIvaC = 0;
-        for (Producto p : compra) {
+        for (Producto p : this.compra.getCompra()) {
 
             if (p.iva() == IVA.A) {
                 productosA += p.cantidad();

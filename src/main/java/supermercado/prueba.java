@@ -17,9 +17,9 @@ public class prueba {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        ArrayList<Producto> cinta=new ArrayList<>();
-        Ticket prueba=new Ticket(cinta);
-        System.out.println(prueba);
+//        ArrayList<Producto> cinta=new ArrayList<>();
+//        //Ticket prueba=new Ticket(cinta);
+//        System.out.println(prueba);
     }
     
 }

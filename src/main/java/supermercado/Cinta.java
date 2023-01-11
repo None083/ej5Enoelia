@@ -14,6 +14,9 @@ public class Cinta {
     
     private ArrayList<Producto> compra;
 
+    public Cinta() {
+        this.compra = new ArrayList<>();
+    }
     
     public ArrayList<Producto> getCompra() {
         return compra;
@@ -32,7 +35,7 @@ public class Cinta {
     }
     
     public Ticket crearTicket(){
-        return new Ticket(this.compra);
+        return new Ticket(this);
     }
     
 }
