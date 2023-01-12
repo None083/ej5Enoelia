@@ -54,7 +54,7 @@ public class Ticket {
         }
         ticket += "------------------------------------------------------------------\n";
 
-        // Contadores para los productos según su tipo de iva
+        // Contadores para los productos y los ivas según su tipo
         int productosA = 0;
         double precioSinIvaA = 0;
         double precioConIvaA = 0;
