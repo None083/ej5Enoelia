@@ -9,14 +9,15 @@ package supermercado;
  * @author Noelia
  */
 public enum IVA {
-    A(4) ,B(10) ,C(21);
+    A(4), B(10), C(21);
     private int iva;
 
     public int getIva() {
         return iva;
     }
-    private IVA(int iva){
-        this.iva=iva;
+
+    private IVA(int iva) {
+        this.iva = iva;
     }
-    
+
 }

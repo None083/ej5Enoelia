@@ -11,17 +11,17 @@ import java.util.ArrayList;
  * @author noelia
  */
 public class Cinta {
-    
+
     private ArrayList<Producto> compra;
 
     public Cinta() {
         this.compra = new ArrayList<>();
     }
-    
+
     public ArrayList<Producto> getCompra() {
         return compra;
     }
-    
+
     public void aniadirProducto(Producto p) {
         this.compra.add(p);
     }
@@ -33,9 +33,9 @@ public class Cinta {
     public boolean estaVacia() {
         return this.compra.isEmpty();
     }
-    
-    public Ticket crearTicket(){
+
+    public Ticket crearTicket() {
         return new Ticket(this);
     }
-    
+
 }
