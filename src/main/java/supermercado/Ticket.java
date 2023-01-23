@@ -19,11 +19,11 @@ public class Ticket {
     private double totalAPagar;
 
     // Constructor
-    public Ticket(Cinta cinta) {
-        this.compra = cinta;
+    public Ticket(Cinta compra) {
+        this.compra = compra;
         this.fecha = LocalDateTime.now();
         // For each para calcular el total a pagar de los productos con sus ivas
-        for (Producto p : cinta.getCompra()) {
+        for (Producto p : compra.getCompra()) {
             double precioSinIva = p.precio() * p.cantidad();
             double impuestoDelProducto = (precioSinIva * p.iva().getIva()) / 100;
             this.totalAPagar += precioSinIva + impuestoDelProducto;
